@@ -26,21 +26,25 @@
     <current-user></current-user>
     <current-user>
       <template v-slot:default="slotProps">
-        {{ slotProps.user.firstName }}
+        {{
+        slotProps.user.firstName
+        }}
       </template>
     </current-user>
 
     <current-user v-slot:default="slotProps">
-      {{ slotProps.user.firstName }}
+      {{
+      slotProps.user.firstName
+      }}
     </current-user>
 
     <current-user v-slot="slotProps">
-      {{ slotProps.user.firstName }}
+      {{
+      slotProps.user.firstName
+      }}
     </current-user>
 
-    <current-user v-slot="{ user }">
-      {{ user.firstName }}
-    </current-user>
+    <current-user v-slot="{ user }">{{ user.firstName }}</current-user>
 
     <base-layout>
       <!-- v-slotは#で省略可能 -->
@@ -62,6 +66,10 @@
         {{ todo.text }}
       </template>
     </todo-list>
+
+    <mouse-event #default="{x,y}">
+      <item :x="x" :y="y"></item>
+    </mouse-event>
   </div>
 </template>
 
@@ -72,6 +80,8 @@ import SubmitButton from "./components/SubmitButton.vue";
 import BaseLayout from "./components/BaseLayout.vue";
 import CurrentUser from "./components/CurrentUser.vue";
 import TodoList from "./components/TodoList.vue";
+import MouseEvent from "./components/MouseEvent.vue";
+import Item from "./components/Item.vue";
 
 export default {
   name: "app",
@@ -81,7 +91,9 @@ export default {
     SubmitButton,
     BaseLayout,
     CurrentUser,
-    TodoList
+    TodoList,
+    MouseEvent,
+    Item
   },
   data() {
     return {
